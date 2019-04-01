@@ -1,0 +1,12 @@
+#name{
+    color: green;
+}
+#time{
+    color: red;
+}
+
+.img{
+    width: 96px;
+    height: 96px;
+    display: inline-block;
+}
