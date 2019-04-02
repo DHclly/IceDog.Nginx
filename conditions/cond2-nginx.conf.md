@@ -4,7 +4,7 @@
 
 配置站点 site1.master
 
-要求
+**条件**
 
 - 正常访问site1.master
 - site1.master使用端口 7110
