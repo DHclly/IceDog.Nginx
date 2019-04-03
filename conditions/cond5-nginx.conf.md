@@ -10,7 +10,8 @@
 - 被代理的站点有site1.master,端口是7110 ，可通过url : http://localhost:7110/ 访问
 - 被代理的站点有site1.slave1,端口是7111 ，可通过url : http://localhost:7111/ 访问
 - 被代理的站点有site1.slave2,端口是7112 ，可通过url : http://localhost:7112/ 访问
-- 三个站点被代理到同一个端口 7500,做负载均衡，以轮询方式负载(默认就是轮询)
+- 三个站点被代理到不同的子目录下，分别是 /site1 , /site1s1 , /site1s2
+- 通过 http://localhost:7500/site1进行访问
 
 ## 配置
 
@@ -135,6 +136,16 @@ http{
     server_name 127.0.0.1;
     location / {
       proxy_pass http://site1;
+    }
+    location /site1 {
+      #注意要加斜杠，不然会路径拼接
+      proxy_pass http://127.0.0.1:7110/;
+    }
+    location /site1s1/ {
+      proxy_pass http://127.0.0.1:7111/;
+    }
+    location /site1s2/ {
+      proxy_pass http://127.0.0.1:7112/;
     }
   }
 }
