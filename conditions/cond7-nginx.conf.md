@@ -15,7 +15,7 @@
 - 页面中访问css的路径是 /css/index.css
 - 使用sub_filter 替换内容实现
 - 替换标题 Index 为 Replace Index
-- 访问 /site3 的时候跳转到 /
+- 访问 /site3 的时候错误码404（因为未配置）变为301 然后跳转到 /
 - 使页面正常访问
 
 ## 配置
