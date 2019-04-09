@@ -16,6 +16,7 @@
 - 使用sub_filter 替换内容实现
 - 替换标题 Index 为 Replace Index
 - 访问 /site3 的时候错误码404（因为未配置）变为301 然后跳转到 /
+- 可以替换的文件类型包含 json 和 纯文本 以及默认的html
 - 使页面正常访问
 
 ## 配置
@@ -65,6 +66,8 @@ http{
       sub_filter      css/ /;
       sub_filter      '<title>Index</title>'  '<title>Replace Index</title>';
       sub_filter_once off;
+      sub_filter_types 'application/json';
+      sub_filter_types 'text/plain';
     }
     location /site3 {
       error_page 404 =301 http://localhost:7130/index.html;
